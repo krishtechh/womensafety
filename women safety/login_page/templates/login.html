@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login/Signup</title>
+  <link rel="stylesheet" href="../static/login.css">
+</head>
+<body>
+  <div class="nav-bar">
+    <div class="nav-logo">
+      <div class="logo"></div>
+    </div>
+    <div class="nav-text">
+    <div class="text">Here <br> <img src="https://th.bing.com/th/id/R.6130bdb57e8c87f9f6523577b43a20b6?rik=rhMf1kC361tvrw&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2f9cp%2fLyp%2f9cpLyp4xi.png&ehk=hvC%2fsdF57aHprQ5LoKWcwfzrQ7hJMh7EtgYwYrcEB%2fc%3d&risl=&pid=ImgRaw&r=0" class="sign">Am</div>
+    </div>
+  </div>
+
+  <div class="part-two">
+    <div class="main">  	
+      <input type="checkbox" id="chk" aria-hidden="true">
+
+      <div class="signup">
+        <form id="signupForm">
+          <label for="chk" aria-hidden="true" id="signup">Sign up</label>
+          <input type="text" name="txt" placeholder="User name" required id="name">
+          <input type="email" name="email" placeholder="Email" required id="email">
+          <input type="password" name="pswd" placeholder="Password" required id="password">
+          <input type="text" name="phone" placeholder="Phone No" required id="phone">
+          <button type="button" id="signupBtn" disabled>Sign up</button>
+        </form>
+      </div>
+
+      <div class="login">
+        <form>
+          <label for="chk" aria-hidden="true">Login</label>
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="pswd" placeholder="Password" required>
+          <a href="password.html">Forgot password?</a>
+          <button>Login</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const signupForm = document.getElementById('signupForm');
+      const signupBtn = document.getElementById('signupBtn');
+      const inputs = signupForm.querySelectorAll('input[required]');
+      
+      // Enable/disable button based on form completion
+      function checkForm() {
+        let allFilled = true;
+        inputs.forEach(input => {
+          if (!input.value.trim()) {
+            allFilled = false;
+          }
+        });
+        signupBtn.disabled = !allFilled;
+      }
+      
+      // Add input event listeners to all required fields
+      inputs.forEach(input => {
+        input.addEventListener('input', checkForm);
+      });
+      
+      // Handle signup button click
+      signupBtn.addEventListener('click', function() {
+        // Here you would typically validate and submit the form
+        // For now, we'll just redirect
+        window.location.href = 'favcontact.html';
+      });
+    });
+  </script>
+</body>
+</html>

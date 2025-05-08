@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <link rel="stylesheet" href="../static/main.css">
+</head>
+<body>
+  <div class="nav-bar">
+    <div class="nav-logo">
+      <div class="logo"></div>
+    </div>
+    <div class="nav-text">
+      <div class="text">Here <br> <img src="https://th.bing.com/th/id/R.6130bdb57e8c87f9f6523577b43a20b6?rik=rhMf1kC361tvrw&riu=http%3a%2f%2fwww.clipartbest.com%2fcliparts%2f9cp%2fLyp%2f9cpLyp4xi.png&ehk=hvC%2fsdF57aHprQ5LoKWcwfzrQ7hJMh7EtgYwYrcEB%2fc%3d&risl=&pid=ImgRaw&r=0" class="sign">Am</div>
+    </div>
+    
+    <div class="toggle">
+      <input type="checkbox" id="btn">
+      <label for="btn">
+        <span class="thumb"></span>
+      </label>
+      <div class="light"></div>
+    </div>
+    
+    <div class="links">
+      <ul>
+        <li><a href="main.html">Home</a></li>
+        <li><a href="favcontact.html">Favourite Contacts</a></li>
+        <li><a href="voice.html">Voice Setup</a></li>
+        <li><a href="../../index.html">About</a></li>
+      </ul>
+    </div>
+    <img src="../../images/user.png" class="user-pic" onclick="toggleMenu()">
+    
+    <div class="sub-menu-wrap" id="subMenu">
+      <div class="sub-menu">
+        <div class="user-info">
+          <img src="../../images/user.png" alt="">
+          <h2>Krish Batra</h2>
+        </div>
+        <hr>
+        
+        <a href="#" class="sub-menu-link">
+          <img src="../../images/profile.png" alt="">
+          <p>Edit Profile</p>
+          <span>></span>
+        </a>
+        
+        <a href="#" class="sub-menu-link">
+          <img src="../../images/setting.png" alt="">
+          <p>Settings & Privacy</p>
+          <span>></span>
+        </a>
+        
+        <a href="#" class="sub-menu-link">
+          <img src="../../images/help.png" alt="">
+          <p>Help & Support</p>
+          <span>></span>
+        </a>
+        
+        <a href="#" class="sub-menu-link">
+          <img src="../../images/logout.png" alt="">
+          <p>Logout</p>
+          <span>></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="part-two">
+    <img src="../../mic-removebg-preview.png" alt="">
+  </div>
+  
+  <script>
+    let subMenu = document.getElementById("subMenu");
+    const toggleBtn = document.getElementById("btn");
+
+    // Function to toggle the submenu
+    function toggleMenu() {
+      subMenu.classList.toggle("open-menu");
+    }
+
+    // Function to toggle dark/light mode
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+      
+      // Save user preference to localStorage
+      if (document.body.classList.contains("dark-mode")) {
+        localStorage.setItem("darkMode", "enabled");
+      } else {
+        localStorage.setItem("darkMode", "disabled");
+      }
+    }
+
+    // Check for saved user preference on page load
+    function loadThemePreference() {
+      const darkMode = localStorage.getItem("darkMode");
+      
+      // If the user previously enabled dark mode
+      if (darkMode === "enabled") {
+        document.body.classList.add("dark-mode");
+        toggleBtn.checked = false; // Toggle is off for dark mode
+      } else {
+        document.body.classList.remove("dark-mode");
+        toggleBtn.checked = true; // Toggle is on for light mode
+      }
+    }
+
+    // Add event listener to toggle button
+    toggleBtn.addEventListener("change", toggleDarkMode);
+
+    // Load user preference when page loads
+    document.addEventListener("DOMContentLoaded", loadThemePreference);
+
+    // Run once on initial load
+    if (document.readyState === "complete" || document.readyState === "interactive") {
+      loadThemePreference();
+    }
+  </script>
+</body>
+</html>
